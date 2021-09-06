@@ -21,6 +21,7 @@ public class OrderController {
      */
     @RequestMapping("/add")
     public void addOrder(Long orderId,Integer goodsId, Integer num, Double money, String username) {
+        System.out.println();
         Order order = new Order();
         order.setId(orderId);
         order.setGoodsId(goodsId);
