@@ -1,0 +1,6 @@
+# Project exclude paths
+/lagou_bussiness/target/
+/lagou_common_db/target/
+/lagou_order/target/
+/lagou_points/target/
+/lagou_storage/target/
