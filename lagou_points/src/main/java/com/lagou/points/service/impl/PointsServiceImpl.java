@@ -24,6 +24,7 @@ public class PointsServiceImpl extends ServiceImpl<PointsMapper, Points> impleme
      * @param points   增加的积分
      * @return 积分对象
      */
+    @Override
     public void increase(String username, Integer points) {
         QueryWrapper<Points> wrapper = new QueryWrapper<Points>();
         wrapper.lambda().eq(Points::getUsername, username);

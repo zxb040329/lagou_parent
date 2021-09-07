@@ -5,6 +5,7 @@ import com.lagou.bussiness.feign.PointsServiceFeign;
 import com.lagou.bussiness.feign.StorageServiceFeign;
 import com.lagou.bussiness.service.BussinessService;
 import com.lagou.bussiness.utils.IdWorker;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +35,9 @@ public class BussinessServiceImpl implements BussinessService {
      * @param username 用户名
      * @param money    金额
      */
-    @Transactional
+//    @Transactional
+    @Override
+    @GlobalTransactional
     public void sale(Integer goodsId, Integer num, Double money, String username) {
         //创建订单
         orderServiceFeign.addOrder(idWorker.nextId(), goodsId, num, money, username);

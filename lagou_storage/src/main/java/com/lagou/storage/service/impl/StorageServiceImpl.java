@@ -20,6 +20,7 @@ public class StorageServiceImpl extends ServiceImpl<StorageMapper, Storage> impl
      * @param quantity 减少数量
      * @return 库存对象
      */
+    @Override
     public void decrease(Integer goodsId, Integer quantity) {
         QueryWrapper<Storage> wrapper = new QueryWrapper<Storage>();
         wrapper.lambda().eq(Storage::getGoodsId, goodsId);

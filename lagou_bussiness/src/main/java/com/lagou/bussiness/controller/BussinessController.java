@@ -12,6 +12,7 @@ public class BussinessController {
     @Autowired
     private BussinessService bussinessService;
 
+    //http://localhost:8000/test1
     @GetMapping("/test1")
     public String test1() {
         bussinessService.sale(1, 10, 100d, "zhaoyang");

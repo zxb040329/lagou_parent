@@ -20,3 +20,26 @@ ribbon:
   ReadTimeout: 500000
   ###指的是建立连接后从服务器读取到可用资源所用的时间。
   ConnectTimeout: 50000
+
+seata:
+  enabled: true
+  application-id: bussiness-service
+  tx-service-group: my_test_tx_group
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace:
+      group: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace:
+      group: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+
+
