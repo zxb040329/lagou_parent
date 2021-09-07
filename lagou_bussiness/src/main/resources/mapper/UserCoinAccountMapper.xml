@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lagou.bussiness.mapper.UserCoinAccountMapper">
+
+    <select id="queryUserCoinCount" resultType="com.lagou.bussiness.common.UserCoinAccountAllVO">
+        SELECT
+            user_id AS userId,
+            coin_name AS coinName,
+            SUM(amount + frozen_amount) AS amountSum
+        FROM
+            `tb_user_coin_account`
+        WHERE (amount !=0 or frozen_amount !=0) AND user_id IN
+        <foreach collection="userIdSet" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        GROUP BY user_id,coin_name
+        UNION
+        SELECT
+        user_id AS userId,
+        <!-- 合约账户保存的单位是usdt  币币账户保存的是当前用币种的个数
+        代码不方便解耦
+        只能将它查出来的coinName设置为usdt省得换算出问题
+
+        -->
+        'USDT' AS coinName,
+        total_balance AS amountSum
+        FROM
+        `tb_usdt_contract_user_account`
+        WHERE
+        total_balance != 0 AND user_id IN
+        <foreach collection="userIdSet" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>
