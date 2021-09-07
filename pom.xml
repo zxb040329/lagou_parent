@@ -13,7 +13,7 @@
     <name>lagou_parent</name>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
     </properties>
     <!--父工程打包方式为pom-->
     <packaging>pom</packaging>
