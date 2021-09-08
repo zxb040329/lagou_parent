@@ -37,6 +37,7 @@ public class BussinessServiceImpl implements BussinessService {
      */
 //    @Transactional
     @Override
+//    @GlobalTransactional(rollbackFor = Exception.class,timeoutMills = 60000,name = "sale")
     @GlobalTransactional
     public void sale(Integer goodsId, Integer num, Double money, String username) {
         //创建订单
