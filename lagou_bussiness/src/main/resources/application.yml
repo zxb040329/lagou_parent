@@ -42,4 +42,7 @@ seata:
       username: "nacos"
       password: "nacos"
 
+simplebean:
+  id: 1
+  name: 自定义starter
 
