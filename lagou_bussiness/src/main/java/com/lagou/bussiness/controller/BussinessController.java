@@ -1,8 +1,10 @@
 package com.lagou.bussiness.controller;
 
+import com.alpha.common.utils.MicroServiceCallRspUtil;
 import com.lagou.bussiness.common.UserCoinAccountAllVO;
 import com.lagou.bussiness.mapper.UserCoinAccountMapper;
 import com.lagou.bussiness.service.BussinessService;
+import com.lagou.common_db.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,5 +44,11 @@ public class BussinessController {
         return userCoinAccountAllVOS;
 //        bussinessService.sale(1, 101, 100d, "zhaoyang");
 //        return "success";
+    }
+
+    @GetMapping("/test4")
+    public List<Order> test4() {
+        List<Order> query = bussinessService.query(1);
+        return query;
     }
 }

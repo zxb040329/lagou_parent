@@ -1,14 +1,19 @@
 package com.lagou.bussiness.service.impl;
 
+import com.alpha.common.model.ResponseData;
+import com.alpha.common.utils.MicroServiceCallRspUtil;
 import com.lagou.bussiness.feign.OrderServiceFeign;
 import com.lagou.bussiness.feign.PointsServiceFeign;
 import com.lagou.bussiness.feign.StorageServiceFeign;
 import com.lagou.bussiness.service.BussinessService;
 import com.lagou.bussiness.utils.IdWorker;
+import com.lagou.common_db.Order;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * 业务逻辑
@@ -47,4 +52,12 @@ public class BussinessServiceImpl implements BussinessService {
         //扣减库存
         storageServiceFeign.decrease(goodsId, num);
     }
+
+    @Override
+    public List<Order> query(Integer goodsId){
+        List<Order> dataFromServiceWarn = MicroServiceCallRspUtil.getDataFromServiceWarn(() ->
+                orderServiceFeign.queryOrderByGoodsId(goodsId), null, null);
+        return dataFromServiceWarn;
+    }
+
 }

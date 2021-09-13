@@ -52,6 +52,12 @@
 <!--            <version>1.3.0</version>-->
 <!--        </dependency>-->
 
+        <!--引入公司的基础模块代码-->
+        <dependency>
+            <groupId>com.alpha</groupId>
+            <artifactId>framework-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>com.lg</groupId>
             <artifactId>zdy-spring-boot-starter</artifactId>

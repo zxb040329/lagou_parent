@@ -1,4 +1,4 @@
-package com.lagou.order.entity;
+package com.lagou.common_db;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;

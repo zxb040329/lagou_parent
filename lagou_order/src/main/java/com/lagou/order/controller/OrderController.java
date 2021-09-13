@@ -1,10 +1,14 @@
 package com.lagou.order.controller;
 
-import com.lagou.order.entity.Order;
+import com.alpha.common.model.ResponseData;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.lagou.common_db.Order;
 import com.lagou.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * 订单控制层
@@ -29,6 +33,14 @@ public class OrderController {
         order.setMoney(money);
         order.setUsername(username);
         orderService.add(order);
+    }
+
+    @RequestMapping("/query")
+    public ResponseData<List<Order>> queryOrderByGoodsId(Integer goodsId){
+        LambdaQueryWrapper<Order> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Order::getGoodsId,goodsId);
+        List<Order> list = orderService.list(queryWrapper);
+        return ResponseData.success(list);
     }
 
 }
