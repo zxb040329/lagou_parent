@@ -43,4 +43,16 @@ public class OrderController {
         return ResponseData.success(list);
     }
 
+    @RequestMapping("/query2")
+    public Integer queryOrderByGoodsId2(Integer goodsId){
+        System.out.println(111);
+        LambdaQueryWrapper<Order> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Order::getGoodsId,goodsId);
+//        List<Order> list = orderService.list(queryWrapper);
+        int count = orderService.count(queryWrapper);
+
+
+        return count;
+    }
+
 }

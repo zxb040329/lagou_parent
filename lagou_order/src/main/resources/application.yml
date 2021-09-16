@@ -36,3 +36,12 @@ seata:
       group: SEATA_GROUP
       username: "nacos"
       password: "nacos"
+
+logging:
+  config: log4j2-spring.xml
+  level:
+    cn.jay.repository: TRACE
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
